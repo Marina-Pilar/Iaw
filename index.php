@@ -1,7 +1,7 @@
 <html>
     <body>
         <?php  
-            echo "Mi primer programa en php!"
+            echo "Mi primer script en php!"
         ?>
     </body>
 </html>
