@@ -31,26 +31,10 @@
         </style>
     </head>
     <body>
-        <h1>Divisores</h1>
-        <form method="POST">
-            <label for="num1">Número inicial:</label><br>
-            <input type="number" id="num1" name="num1" required>
-            <br><br>
-            <label for="num2">Número final:</label><br>
-            <input type="number" id="num2" name="num2" required>
-            <br><br>
-            <button type="submit">Done</button>
-        </form> 
         <?php
         /* obtenemos los divisores */
-        $num1 = isset($_POST['num1']) ? (int)$_POST['num1'] : 1;
-        $num2 = isset($_POST['num2']) ? (int)$_POST['num2'] : 10;
-
-        /* validamos el número inicial sea menor que el final */
-        if ($num1 > $num2) {
-            echo "<p> El número incial debe ser menor o igual que el final </p>";
-            exit;
-        }
+        $num1 = 1;
+        $num2 = 10;
 
         /* array de divisores entre el rango */
         $divisores = range($num1, $num2);

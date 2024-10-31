@@ -31,35 +31,23 @@
         </style>
     </head>
     <body>
-        <h1>Divisores</h1>
-        <form method="POST">
-            <label for="num1">Número inicial:</label><br>
-            <input type="number" id="num1" name="num1" required>
-            <br><br>
-            <label for="num2">Número final:</label><br>
-            <input type="number" id="num2" name="num2" required>
-            <br><br>
-            <button type="submit">Done</button>
-        </form> 
         <?php
         /* funcion recupera */
-        function recupera($startNum, $endNum) {
-            if($startNum < 1 || $startNum > 10 || $endNum < 10 || $endNum > 20 || $startNum >=$endNum) {
-                return false;
+        function recupera($key, $min, $max) {
+            if(isset($_POST[$key])) {
+                $value = intval($_POST[$key]);
+                if($value >= $min && $value <= $max) {
+                    return $value;
+                }
             }
-            return range($startNum, $endNum);
+            return null;
         }
-        
         /* obtenemos los divisores */
-        $num1 = isset($_POST['num1']) ? (int)$_POST['num1'] : 1;
-        $num2 = isset($_POST['num2']) ? (int)$_POST['num2'] : 10;
+        $num1 = recupera('num1', 1, 10);
+        $num2 = recupera('num2', 10, 20);
 
         /* array de divisores entre el rango */
-        $divisores = recupera($num1, $num2);
-        if ($divisores === false) {
-            echo "<p> Introduzca números válidos </p>";
-            exit;
-        }
+        $divisores = range($num1, $num2);
 
         /* array de los números del 50 al 60 */
         $nums = range(50, 60);
