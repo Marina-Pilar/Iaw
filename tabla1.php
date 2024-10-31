@@ -32,7 +32,7 @@
     </head>
     <body>
         <h1>Divisores</h1>
-        <form method="numbers">
+        <form method="POST">
             <label for="num1">Número inicial:</label><br>
             <input type="number" id="num1" name="num1" required>
             <br><br>
@@ -43,8 +43,8 @@
         </form> 
         <?php
         /* obtenemos los divisores */
-        $num1 = isset($_numbers['num1']);
-        $num2 = isset($_numbers['num2']);
+        $num1 = isset($_POST['num1']) ? (int)$_POST['num1'] : 1;
+        $num2 = isset($_POST['num2']) ? (int)$_POST['num2'] : 10;
 
         /* validamos el número inicial sea menor que el final */
         if ($num1 > $num2) {
@@ -72,7 +72,7 @@
         <table>
             <thead>
                 <tr>
-                    <th class="head-fa"></th>
+                    <th class="header-fa"></th>
                     <?php
                         /* encabezado de los números del 50 al 60 */
                         foreach ($nums as $num) {
@@ -86,7 +86,7 @@
                     /* recorremos divisores y resultados para generar filas */
                     foreach ($divisores as $index => $divisor) {
                         /* alterar color de fondo entre amarillo para los impares y naranja para los pares */
-                        $bg = ($index % 2 == 0) ? "orange-bg" : "yellow-bg";
+                        $bg = ($index % 2 == 0) ? "yellow-bg" : "orange-bg";
                         echo "<tr class='$bg'>";
                         /* columna de divisores con el fondo morado */
                         echo "<td class='divisor-column'>$divisor</td>";
